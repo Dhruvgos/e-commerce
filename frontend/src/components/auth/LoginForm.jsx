@@ -25,7 +25,7 @@ const LoginForm = () => {
  
 
   const handleLogin = async() => {
-    const response = await fetch('http://localhost:4000/api/v1/users/login',{
+    const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/users/login',{
       method:'POST',headers: {
         'Content-Type': 'application/json',
         },body:JSON.stringify({email:email,password:password})

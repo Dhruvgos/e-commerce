@@ -14,7 +14,7 @@ function Cart() {
 
   const fetchCart = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/v1/cart/get-cart', {
+      const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/cart/get-cart', {
         method: 'GET',
         credentials: 'include',
       });

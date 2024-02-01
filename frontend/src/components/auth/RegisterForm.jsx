@@ -13,7 +13,7 @@ const RegisterForm = () => {
   const navigate = useNavigate();
   const handleRegister = async() => {
 
-    const response = await fetch('http://localhost:4000/api/v1/users/register',{
+    const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/users/register',{
       method:'POST',headers: {
         'Content-Type': 'application/json',
         },body:JSON.stringify({email:email,password:password,role:role,name:name})

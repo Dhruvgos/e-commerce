@@ -6,7 +6,7 @@ export const UpdateOrderModal = ({ order, onUpdate, onClose, id }) => {
     const handleSubmit = async () => {
       try {
         // console.log(newStatus)
-        const response = await fetch(`http://localhost:4000/api/v1/orders/update/${id}`, {
+        const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/orders/update/${id}`, {
           method: 'PUT',
           credentials: 'include',
           body: JSON.stringify({ status: newStatus }),

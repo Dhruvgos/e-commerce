@@ -9,7 +9,7 @@ function OrderDetails() {
   useEffect(() => {
     const fetchOrderDetail = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/v1/orders/getorder/${orderId}`, {
+        const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/orders/getorder/${orderId}`, {
           method: 'GET',
           credentials: 'include',
           headers: {

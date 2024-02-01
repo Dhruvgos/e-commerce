@@ -17,7 +17,7 @@ function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/v1/products/getall?page=1&limit=12", {
+        const response = await fetch("https://ecommerce-kdk6.onrender.com/api/v1/products/getall?page=1&limit=12", {
           method: 'GET',
         });
         const data = await response.json();

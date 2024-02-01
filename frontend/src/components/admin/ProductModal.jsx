@@ -47,7 +47,7 @@ const ProductModal = ({ isOpen, onRequestClose }) => {
       await handleImageUpload();
       const imagesArray = Array.from(images).map(image => image.url || image.public_id);
 
-      const response = await fetch('http://localhost:4000/api/v1/products/add', {
+      const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/products/add', {
         method: 'POST',
         credentials: 'include',
         headers: {

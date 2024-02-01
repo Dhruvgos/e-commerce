@@ -20,7 +20,7 @@ console.log(id)
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/v1/products/create-review/${id}`, {
+      const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/products/create-review/${id}`, {
         method: 'PUT',
         credentials: 'include',
         headers: {
