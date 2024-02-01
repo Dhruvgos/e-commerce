@@ -26,8 +26,9 @@ userRouter.post("/register", async (req, res) => {
     });
 
     // Set the token in a cookie (you might want to store it securely on the client side)
-    res.cookie("token", token, { httpOnly: true ,sameSite: 'None',
-    secure: true});
+    res.cookie("token", token, { httpOnly: true, sameSite: 'Lax', secure: false });
+
+
 
     // Send the user and token information in the response
     res.json({ user: newUser, token });
@@ -56,8 +57,8 @@ userRouter.post("/login", async (req, res) => {
       });
 
       // Set the token in a cookie (httpOnly for security)
-      res.cookie("token", token, { httpOnly: true ,sameSite: 'None',
-      secure: true});
+      res.cookie("token", token, { httpOnly: true, sameSite: 'Lax', secure: false });
+
 
       // Return user information and token in the response
       res.json({ user, token });
