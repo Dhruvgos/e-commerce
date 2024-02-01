@@ -10,7 +10,7 @@ const AdminOrders = () => {
   useEffect(() => {
     const fetchAdminOrders = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/v1/orders/getallorders`, {
+        const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/orders/getallorders`, {
           credentials: 'include'
         });
 

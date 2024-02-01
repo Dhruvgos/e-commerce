@@ -41,7 +41,7 @@ function Cart() {
       }
 
       const productDetailsPromises = cartItemsData.map(async (item) => {
-        const response = await fetch(`http://localhost:4000/api/v1/products/get/${item.productId}`, {
+        const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/products/get/${item.productId}`, {
           method: 'GET',
         });
         const productDetails = await response.json();
@@ -64,7 +64,7 @@ function Cart() {
   }, [orderPlaced, reviewdelete]); // Add orderPlaced as a dependency here
 
   const deleteItem = async (id) => {
-    const response = await fetch(`http://localhost:4000/api/v1/cart/remove-from-cart/${id}`, {
+    const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/cart/remove-from-cart/${id}`, {
       method: 'DELETE',
       credentials: 'include',
     });
