@@ -132,7 +132,7 @@ orderRouter.get("/getorder/:id", isAuthenticated, async (req, res) => {
   }
 });
 orderRouter.get("/me", isAuthenticated, async (req, res) => {
-  const token = req.cookies.token;
+  const token = req.header('token')
   try {
     if (!token) {
       return res.send("token not found");
