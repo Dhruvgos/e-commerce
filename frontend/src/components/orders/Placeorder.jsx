@@ -29,7 +29,7 @@ console.log(products)
             method: 'POST',
             credentials: 'include',
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': 'application/json','auth-token':localStorage.getItem('token')
             },
             body: JSON.stringify({ shippingInfo, products }),
           });

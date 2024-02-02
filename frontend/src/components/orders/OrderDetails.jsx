@@ -14,6 +14,7 @@ function OrderDetails() {
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
+            'auth-token':localStorage.getItem('token')
           },
         });
 

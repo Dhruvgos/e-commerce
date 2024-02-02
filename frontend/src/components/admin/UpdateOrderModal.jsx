@@ -11,7 +11,7 @@ export const UpdateOrderModal = ({ order, onUpdate, onClose, id }) => {
           credentials: 'include',
           body: JSON.stringify({ status: newStatus }),
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json',  'auth-token':localStorage.getItem('token')
           },
         });
   

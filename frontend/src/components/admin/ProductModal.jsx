@@ -51,7 +51,7 @@ const ProductModal = ({ isOpen, onRequestClose }) => {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json',  'auth-token':localStorage.getItem('token')
         },
         body: JSON.stringify({
           name: productName,

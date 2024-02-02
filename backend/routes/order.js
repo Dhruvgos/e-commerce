@@ -11,8 +11,8 @@ dotenv.config({path:'backend/config/config.env'})
 const stripe  = new Stripe(process.env.STRIPE_KEY)
 export const isAuthenticated = async (req, res, next) => {
   try {
-    const token = req.cookies.token;
-
+    // const token = req.cookies.token;
+    const token = req.header('auth-token');
     if (!token) {
       return res.status(401).send("Unauthorized: No token found");
     }
@@ -38,7 +38,7 @@ export const isAuthenticated = async (req, res, next) => {
 };
 const isAdmin = async (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    const token = req.header('auth-token');
     
     if (!token) {
       return res.status(401).send("Unauthorized: No token found");

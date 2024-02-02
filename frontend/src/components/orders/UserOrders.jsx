@@ -22,7 +22,7 @@ function UserOrders() {
           method: 'GET',
           credentials: 'include',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json','auth-token':localStorage.getItem('token')
     
           },
         });

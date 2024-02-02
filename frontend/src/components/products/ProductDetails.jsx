@@ -92,7 +92,9 @@ const ProductDetails = () => {
       `https://ecommerce-kdk6.onrender.com/api/v1/products/productreview/${productId}`,
       {
         method: "DELETE",
-        credentials: "include",
+        credentials: "include",headers:{
+          'auth-token':localStorage.getItem('token')
+        }
       }
     );
 
@@ -122,7 +124,7 @@ const ProductDetails = () => {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json',  'auth-token':localStorage.getItem('token')
         },
         body: JSON.stringify({ userId: user.userProfile._id, productId: productId, quantity: quantity }),
       });

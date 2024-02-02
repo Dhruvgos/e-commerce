@@ -11,7 +11,10 @@ const AdminOrders = () => {
     const fetchAdminOrders = async () => {
       try {
         const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/orders/getallorders`, {
-          credentials: 'include'
+          method:'GET',
+          credentials: 'include',headers:{
+            'auth-token':localStorage.getItem('token')
+          }
         });
 
         const data = await response.json();
@@ -35,6 +38,7 @@ const AdminOrders = () => {
     const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/orders/delete/${orderId}`, {
       method: 'DELETE',
       credentials: 'include'
+      ,headers:  {'auth-token':localStorage.getItem('token')}
     });
 
     const data = await response.json();

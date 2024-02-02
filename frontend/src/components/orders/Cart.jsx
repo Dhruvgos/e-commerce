@@ -74,7 +74,7 @@ function Cart() {
   const deleteItem = async (id) => {
     const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/cart/remove-from-cart/${id}`, {
       method: 'DELETE',
-      credentials: 'include',
+      credentials: 'include',  'auth-token':localStorage.getItem('token')
     });
     const data = await response.json();
     setReviewDelete(true);

@@ -24,7 +24,7 @@ console.log(id)
         method: 'PUT',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json',  'auth-token':localStorage.getItem('token')
         },
         body: JSON.stringify({ rating: rating, comment: comment }),
       });

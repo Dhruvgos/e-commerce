@@ -26,7 +26,7 @@ const ProductCard = ({ _id, name, price, image ,rating}) => {
         method: 'POST',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json',  'auth-token':localStorage.getItem('token')
         },
         body: JSON.stringify({ userId: user.userProfile._id, productId:_id, quantity: quantity }),
       });

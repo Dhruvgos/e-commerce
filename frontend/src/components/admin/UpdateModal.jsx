@@ -11,7 +11,7 @@ const UpdateModal = ({ isOpen, onRequestClose, productDetail }) => {
        const reponse = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/products/${productDetail._id}/update`,{
         method:'PUT',credentials:'include',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json',  'auth-token':localStorage.getItem('token')
             },
         
         body:JSON.stringify({

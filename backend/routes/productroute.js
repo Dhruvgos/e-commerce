@@ -19,7 +19,7 @@ const storage = multer.diskStorage({});
 const upload = multer({ storage: storage });
 export const isAdmin = async (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    const token = req.header('auth-token');
 
     if (!token) {
       return res.status(401).send("Unauthorized: No token found");
