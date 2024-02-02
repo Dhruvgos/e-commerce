@@ -9,7 +9,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const isAuthenticated = async (req, res, next) => {
     try {
       const token = req.cookies.token;
-  console.log(token)
+  console.log("token from cart.js :" ,token)
       if (!token) {
         return res.status(401).send("Unauthorized: No token found");
       }

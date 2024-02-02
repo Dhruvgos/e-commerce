@@ -32,7 +32,7 @@ function Cart() {
     }
 
    const t =  Cookies.get('token');
-    console.log(t)
+    console.log('tokent from cart.jsx' ,t)
     setloading(true)
     const fetchProductDetails = async () => {
       const cartItemsData = await fetchCart();
