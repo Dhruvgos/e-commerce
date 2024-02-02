@@ -14,9 +14,13 @@ function Cart() {
 
   const fetchCart = async () => {
     try {
+      const token =  Cookies.get('token');
       const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/cart/get-cart', {
         method: 'GET',
         credentials: 'include',
+        headers:{
+          'Authorization': `Bearer ${token}`,
+        }
       });
 
       const data = await response.json();
