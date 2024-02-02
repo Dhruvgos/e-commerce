@@ -41,6 +41,7 @@ const LoginForm = () => {
       console.log(token)
       console.log(data)
       Cookies.set('token',token);
+      localStorage.setItem('token',token);
       dispatch(login())
       navigate('/')
     }
