@@ -8,8 +8,7 @@ export const cartRouter = express.Router()
 const ObjectId = mongoose.Types.ObjectId;
 const isAuthenticated = async (req, res, next) => {
     try {
-      console.log(req)
-      const token = localStorage.getItem('token')
+      const token = req.header('auth-token');
   console.log("token from cart.js :" ,token)
       if (!token) {
         return res.status(401).send("Unauthorized: No token found");

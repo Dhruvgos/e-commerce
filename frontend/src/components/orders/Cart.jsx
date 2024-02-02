@@ -19,7 +19,8 @@ function Cart() {
         method: 'GET',
         credentials: 'include',
         headers:{
-          'Authorization': `Bearer ${token}`,
+          'auth-token':localStorage.getItem('token')
+          ,
         }
       });
 
@@ -34,7 +35,7 @@ function Cart() {
     if (!isLogin) {
       return navigate('/login');
     }
-
+    console.log("from cart.jsx ls: ",localStorage.getItem('token'))
    const t =  Cookies.get('token');
     console.log('tokent from cart.jsx' ,t)
     setloading(true)

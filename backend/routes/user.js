@@ -29,6 +29,7 @@ userRouter.post("/register", async (req, res) => {
  
     res.cookie("token", token, { httpOnly: true, sameSite: 'strict', secure: false , domain: '.onrender.com',  // Specify the domain here
     path: '/api/v1',     });
+    localStorage.setItem('token',token);
     
     
     
@@ -59,6 +60,7 @@ userRouter.post("/login", async (req, res) => {
       // Set the token in a cookie (httpOnly for security)
       
       localStorage.setItem('token',token);
+
       res.cookie("token", token, { httpOnly: true,  secure: true,sameSite:'strict'});
       // res.cookie("token", token, { httpOnly: true, sameSite: 'lax', secure: true, domain: '.onrender.com',  // Specify the domain here
       // path: '/',      });
