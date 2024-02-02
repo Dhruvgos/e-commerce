@@ -53,13 +53,11 @@ userRouter.post("/login", async (req, res) => {
 
     if (isPassword) {
       // Generate a JWT
-      const token = jwt.sign({ userId: user._id }, "DHRUV", {
-        expiresIn: "1h",
-      });
+      const token = jwt.sign({ userId: user._id }, "DHRUV");
 
       // Set the token in a cookie (httpOnly for security)
       res.cookie("token", token, { httpOnly: true, sameSite: 'lax', secure: true, domain: '.onrender.com',  // Specify the domain here
-      path: '/api/v1',      });
+      path: '/',      });
 
 
 
