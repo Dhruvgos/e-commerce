@@ -57,7 +57,8 @@ userRouter.post("/login", async (req, res) => {
       });
 
       // Set the token in a cookie (httpOnly for security)
-      res.cookie("token", token, { httpOnly: true, sameSite: 'Lax', secure: false });
+      res.cookie("token", token, { httpOnly: true, sameSite: 'None', secure: true });
+
 
 
       // Return user information and token in the response
