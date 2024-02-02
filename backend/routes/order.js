@@ -102,7 +102,7 @@ orderRouter.post("/place-order", isAuthenticated, async (req, res) => {
       mode:'payment',success_url:"https://dash-deals.onrender.com/success",
       cancel_url:"https://dash-deals.onrender.com/cancel"
     })
-      
+//
     const order = await Orders.create({
       shippingInfo,
       products,
