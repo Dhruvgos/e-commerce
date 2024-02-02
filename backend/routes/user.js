@@ -26,11 +26,12 @@ userRouter.post("/register", async (req, res) => {
     });
 
     // Set the token in a cookie (you might want to store it securely on the client side)
+    localStorage.setItem('token',token);
     res.cookie("token", token, { httpOnly: true, sameSite: 'strict', secure: false , domain: '.onrender.com',  // Specify the domain here
     path: '/api/v1',     });
-
-
-
+    
+    
+    
     // Send the user and token information in the response
     res.json({ user: newUser, token });
   } catch (error) {
@@ -41,27 +42,28 @@ userRouter.post("/register", async (req, res) => {
 
 userRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
+  
   try {
     const user = await User.findOne({ email }).select('+password');
     console.log(user);
     if (!user) {
       return res.status(401).send("User with this email could not be found");
     }
-
+    
     const isPassword = await bcrypt.compare(password,user.password) 
-
+    
     if (isPassword) {
       // Generate a JWT
       const token = jwt.sign({ userId: user._id }, "DHRUV");
-
+      
       // Set the token in a cookie (httpOnly for security)
       
+      localStorage.setItem('token',token);
       res.cookie("token", token, { httpOnly: true,  secure: true,sameSite:'strict'});
       // res.cookie("token", token, { httpOnly: true, sameSite: 'lax', secure: true, domain: '.onrender.com',  // Specify the domain here
       // path: '/',      });
-
-
+      
+      
       // Return user information and token in the response
       res.json({ user, token });
     } else {
