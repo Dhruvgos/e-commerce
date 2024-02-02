@@ -38,6 +38,8 @@ const LoginForm = () => {
       const token = data.token;
       dispatch(setUserProfile({userProfile:data.user}))
       console.log(user)
+      console.log(token)
+      console.log(data)
       Cookies.set('token',token);
       dispatch(login())
       navigate('/')
