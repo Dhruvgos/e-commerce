@@ -56,9 +56,10 @@ userRouter.post("/login", async (req, res) => {
       const token = jwt.sign({ userId: user._id }, "DHRUV");
 
       // Set the token in a cookie (httpOnly for security)
-      res.cookie("token", token, { httpOnly: true, sameSite: 'lax', secure: true, domain: '.onrender.com',  // Specify the domain here
-      path: '/',      });
-
+      
+      res.cookie("token", token, { httpOnly: true,  secure: true});
+      // res.cookie("token", token, { httpOnly: true, sameSite: 'lax', secure: true, domain: '.onrender.com',  // Specify the domain here
+      // path: '/',      });
 
 
       // Return user information and token in the response
