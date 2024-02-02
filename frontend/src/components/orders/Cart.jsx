@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import Placeorder from './Placeorder';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import Cookies from 'js-cookie';
 function Cart() {
   const isLogin = useSelector((state) => state.auth.isLogin);
   const [cartItemsWithDetails, setCartItemsWithDetails] = useState([]);
@@ -30,6 +30,9 @@ function Cart() {
     if (!isLogin) {
       return navigate('/login');
     }
+
+   const t =  Cookies.get('token');
+    console.log(t)
     setloading(true)
     const fetchProductDetails = async () => {
       const cartItemsData = await fetchCart();
