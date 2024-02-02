@@ -99,8 +99,8 @@ orderRouter.post("/place-order", isAuthenticated, async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types:['card'],
       line_items:lineItems,
-      mode:'payment',success_url:"http://localhost:5173/success",
-      cancel_url:"http://localhost:5173/cancel"
+      mode:'payment',success_url:"https://dash-deals.onrender.com/success",
+      cancel_url:"https://dash-deals.onrender.com/cancel"
     })
       
     const order = await Orders.create({
