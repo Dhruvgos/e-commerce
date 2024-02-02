@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import SimpleImageSlider from 'react-simple-image-slider';
-import { Audio } from 'react-loader-spinner'
+import { SpinnerCircular } from 'spinners-react';
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -67,15 +67,11 @@ function ProductList() {
       </div>
 
       {loading ? (
-        <div className="text-center"><Audio
-        height="80"
-        width="80"
-        radius="9"
-        color="green"
-        ariaLabel="three-dots-loading"
-        wrapperStyle
-        wrapperClass
-      /></div>
+        <div className="text-center">
+
+<SpinnerCircular />
+
+        </div>
       ) : (
         <div className="p-8 bg-slate-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
           {products
