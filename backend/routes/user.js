@@ -26,7 +26,7 @@ userRouter.post("/register", async (req, res) => {
     });
 
     // Set the token in a cookie (you might want to store it securely on the client side)
-    res.cookie("token", token, { httpOnly: true, sameSite: 'Lax', secure: false , domain: '.onrender.com',  // Specify the domain here
+    res.cookie("token", token, { httpOnly: true, sameSite: 'lax', secure: false , domain: '.onrender.com',  // Specify the domain here
     path: '/api/v1',     });
 
 
@@ -58,7 +58,7 @@ userRouter.post("/login", async (req, res) => {
       });
 
       // Set the token in a cookie (httpOnly for security)
-      res.cookie("token", token, { httpOnly: false, sameSite: 'None', secure: true, domain: '.onrender.com',  // Specify the domain here
+      res.cookie("token", token, { httpOnly: false, sameSite: 'lax', secure: true, domain: '.onrender.com',  // Specify the domain here
       path: '/api/v1',      });
 
 
