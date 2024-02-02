@@ -43,10 +43,13 @@ const ProductDetails = () => {
     
     const fetchAProduct = async () => {
       const response = await fetch(
-        `https://ecommerce-kdk6.onrender.com/v1/products/get/${productId}`,
+        `https://ecommerce-kdk6.onrender.com/api/v1/products/get/${productId}`,
         {
-          method: "GET",
+          method: "GET",headers:{
+            'auth-token':localStorage.getItem('token')
+          }
         }
+        
       );
       const data = await response.json();
       console.log(data.product.images)

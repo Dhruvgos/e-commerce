@@ -11,12 +11,8 @@ function UserOrders() {
     const fetchOrder = async () => {
       try {
 
-        const token = Cookies.get('token')
-        if (!token) {
-          console.error('No token found');
-          return;
-        }
-          console.log(token)
+       
+
         
         const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/orders/me', {
           method: 'GET',
