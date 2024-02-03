@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { format } from 'date-fns';
-
+import { SpinnerCircular } from 'spinners-react';
 function OrderDetails() {
   const [orderDetails, setOrderDetails] = useState(null);
   const { orderId } = useParams();
@@ -33,7 +33,9 @@ function OrderDetails() {
   }, [orderId]);
 
   if (!orderDetails) {
-    return <div>Loading...</div>;
+    return <div className="flex items-center justify-center h-screen">
+    <SpinnerCircular />
+  </div>
   }
 
   return (

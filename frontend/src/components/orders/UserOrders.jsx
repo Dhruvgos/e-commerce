@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useState,useEffect } from 'react';
 import Cookies from 'js-cookie';
+import { SpinnerCircular } from 'spinners-react';
 function UserOrders() {
   const [loading, setloading] = useState(true)
   const [orders, setorders] = useState([])
@@ -51,7 +52,9 @@ function UserOrders() {
         <div className="container mx-auto mt-8">
       <h2 className="text-3xl font-bold mb-4">My Orders</h2>
       <ul className="space-y-4">
-      {(loading)?<p>Loading...</p>:
+      {(loading)?<div className="flex items-center justify-center h-screen">
+    <SpinnerCircular />
+  </div>:
         orders.length===0? <p>No Orders to show.</p>:
         orders.map((order) => (
           <li

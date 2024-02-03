@@ -3,6 +3,7 @@ import Placeorder from './Placeorder';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
+import { SpinnerCircular } from 'spinners-react';
 function Cart() {
   const isLogin = useSelector((state) => state.auth.isLogin);
   const [cartItemsWithDetails, setCartItemsWithDetails] = useState([]);
@@ -87,7 +88,9 @@ function Cart() {
     <div className="container mx-auto p-4 mt-8">
       <div className="max-w-2xl mx-auto bg-white p-6 rounded-md shadow-md">
         <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
-        {loading?(<p>Loading...</p>):
+        {loading?(<div className="flex items-center justify-center h-screen">
+    <SpinnerCircular />
+  </div>):
         (cartItemsWithDetails.length === 0) ? (
 
             

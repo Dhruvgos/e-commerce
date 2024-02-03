@@ -3,7 +3,7 @@ import { useEffect,useState } from 'react'
 // import ProductCard from '../products/ProductCard.jsx'
 import AdminProductCard from './AdminProductCard.jsx'
 
-
+import { SpinnerCircular } from 'spinners-react';
 
 const AdminProductList = () => {
 
@@ -29,7 +29,9 @@ const AdminProductList = () => {
     // console.log(products[0].images[0].secure_url)
     return (
         <div className="p-8 bg-slate-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
-            {loading?<p>Loading...</p>:products.length===0?<p>No products to show.</p>:
+            {loading?<div className="flex items-center justify-center h-screen">
+    <SpinnerCircular />
+  </div>:products.length===0?<p>No products to show.</p>:
             products.map((product) => (
                 console.log(product),
                 <AdminProductCard key={product._id} product={product} {...product} image={product.images[0].secure_url} />

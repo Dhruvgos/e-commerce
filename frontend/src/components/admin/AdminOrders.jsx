@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { UpdateOrderModal } from './UpdateOrderModal.jsx';
-
+import { SpinnerCircular } from 'spinners-react';
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const [expandedOrder, setExpandedOrder] = useState(null);
@@ -68,7 +68,9 @@ const AdminOrders = () => {
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-semibold mb-4">Admin Orders</h1>
       <div className="grid grid-cols-1 gap-4">
-        {loading?<p>Loading...</p>:orders.length===0?<p>No orders to show.</p>:
+        {loading?<div className="flex items-center justify-center h-screen">
+    <SpinnerCircular />
+  </div>:orders.length===0?<p>No orders to show.</p>:
         orders.map((order) => (
           <div key={order._id} className="border p-4 rounded shadow mb-4 flex justify-between">
             <div>
