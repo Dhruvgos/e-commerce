@@ -8,7 +8,7 @@ const UpdateModal = ({ isOpen, onRequestClose, productDetail,productisUpdated })
     const [category, setCategory] = useState(productDetail.product.category)
     const [description, setDescription] = useState(productDetail.product.description)
     const UpdateProduct = async() => {
-       const reponse = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/products/${productDetail._id}/update`,{
+       const reponse = await fetch(`${import.meta.env.VITE_URL}/api/v1/products/${productDetail._id}/update`,{
         method:'PUT',credentials:'include',
             headers: {
                 'Content-Type': 'application/json',  'auth-token':localStorage.getItem('token')

@@ -6,7 +6,7 @@ const AdminProductCard = ({ _id, name, price, image, rating, product,productisUp
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const deleteProduct = async()=>{
-    const repsonse = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/products/${_id}/delete`,{
+    const repsonse = await fetch(`${import.meta.env.VITE_URL}/api/v1/products/${_id}/delete`,{
       method:'DELETE',credentials:'include',
       headers:{
         'auth-token':localStorage.getItem('token')

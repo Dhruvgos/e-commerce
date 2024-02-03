@@ -9,7 +9,7 @@ function OrderDetails() {
   useEffect(() => {
     const fetchOrderDetail = async () => {
       try {
-        const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/orders/getorder/${orderId}`, {
+        const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/orders/getorder/${orderId}`, {
           method: 'GET',
           credentials: 'include',
           headers: {

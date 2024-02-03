@@ -43,7 +43,7 @@ const ProductDetails = () => {
     
     const fetchAProduct = async () => {
       const response = await fetch(
-        `https://ecommerce-kdk6.onrender.com/api/v1/products/get/${productId}`,
+        `${import.meta.env.VITE_URL}/api/v1/products/get/${productId}`,
         {
           method: "GET",
         }
@@ -62,7 +62,7 @@ const ProductDetails = () => {
 
     const fetchReviews = async () => {
       const response = await fetch(
-        `https://ecommerce-kdk6.onrender.com/api/v1/products/productreview/${productId}`,
+        `${import.meta.env.VITE_URL}/api/v1/products/productreview/${productId}`,
         {
           method: "GET",
         }
@@ -96,7 +96,7 @@ const ProductDetails = () => {
 
   const deleteReview = async () => {
     const response = await fetch(
-      `https://ecommerce-kdk6.onrender.com/api/v1/products/productreview/${productId}`,
+      `${import.meta.env.VITE_URL}/api/v1/products/productreview/${productId}`,
       {
         method: "DELETE",
         credentials: "include",headers:{
@@ -129,7 +129,7 @@ const ProductDetails = () => {
         return navigate('/login')
       }
 
-      const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/cart/add-to-cart', {
+      const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/cart/add-to-cart`, {
         method: 'POST',
         credentials: 'include',
         headers: {

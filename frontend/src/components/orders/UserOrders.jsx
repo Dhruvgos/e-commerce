@@ -15,7 +15,7 @@ function UserOrders() {
        
 
         
-        const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/orders/me', {
+        const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/orders/me`, {
           method: 'GET',
           credentials: 'include',
           headers: {

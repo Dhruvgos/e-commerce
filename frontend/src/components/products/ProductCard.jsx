@@ -22,7 +22,7 @@ const ProductCard = ({ _id, name, price, image ,rating}) => {
             return navigate('/login')
           }
  
-      const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/cart/add-to-cart', {
+      const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/cart/add-to-cart`, {
         method: 'POST',
         credentials: 'include',
         headers: {

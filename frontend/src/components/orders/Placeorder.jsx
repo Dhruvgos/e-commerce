@@ -25,7 +25,7 @@ console.log(products)
           console.log('Shipping Info:', shippingInfo);
           console.log(products);
       
-          const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/orders/place-order', {
+          const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/orders/place-order`, {
             method: 'POST',
             credentials: 'include',
             headers: {

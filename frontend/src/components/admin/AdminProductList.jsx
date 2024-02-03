@@ -19,7 +19,7 @@ const AdminProductList = ({productadded}) => {
     }
     useEffect(() => {
         const fetchProducts = async () => {
-            const repsonse = await fetch("https://ecommerce-kdk6.onrender.com/api/v1/products/getadminproducts", {
+            const repsonse = await fetch(`${import.meta.env.VITE_URL}/api/v1/products/getadminproducts`, {
                 method: 'GET',credentials:'include',headers:{
                     'auth-token':localStorage.getItem('token')
                 }

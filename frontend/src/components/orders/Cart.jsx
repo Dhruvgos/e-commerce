@@ -16,7 +16,7 @@ function Cart() {
   const fetchCart = async () => {
     try {
       const token =  Cookies.get('token');
-      const response = await fetch('https://ecommerce-kdk6.onrender.com/api/v1/cart/get-cart', {
+      const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/cart/get-cart`, {
         method: 'GET',
         credentials: 'include',
         headers:{
@@ -50,7 +50,7 @@ function Cart() {
       }
 
       const productDetailsPromises = cartItemsData.map(async (item) => {
-        const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/products/get/${item.productId}`, {
+        const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/products/get/${item.productId}`, {
           method: 'GET',
         });
         const productDetails = await response.json();
@@ -73,7 +73,7 @@ function Cart() {
   }, [orderPlaced, reviewdelete]); // Add orderPlaced as a dependency here
 
   const deleteItem = async (id) => {
-    const response = await fetch(`https://ecommerce-kdk6.onrender.com/api/v1/cart/remove-from-cart/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/cart/remove-from-cart/${id}`, {
       method: 'DELETE',
       credentials: 'include',  'auth-token':localStorage.getItem('token')
     });
