@@ -75,7 +75,10 @@ function Cart() {
   const deleteItem = async (id) => {
     const response = await fetch(`${import.meta.env.VITE_URL}/api/v1/cart/remove-from-cart/${id}`, {
       method: 'DELETE',
-      credentials: 'include',  'auth-token':localStorage.getItem('token')
+      credentials: 'include',  
+      headers:{
+        'auth-token':localStorage.getItem('token')
+      }
     });
     const data = await response.json();
     setReviewDelete(true);
