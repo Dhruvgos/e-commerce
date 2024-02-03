@@ -45,9 +45,7 @@ const ProductDetails = () => {
       const response = await fetch(
         `https://ecommerce-kdk6.onrender.com/api/v1/products/get/${productId}`,
         {
-          method: "GET",headers:{
-            'auth-token':localStorage.getItem('token')
-          }
+          method: "GET",
         }
         
       );
