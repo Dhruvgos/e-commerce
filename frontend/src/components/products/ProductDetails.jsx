@@ -72,7 +72,7 @@ const ProductDetails = () => {
       data.productReview.forEach((r) => {
         if(!userProfile){
 
-          if (r.user === user.userProfile._id) {
+          if (user && user.userProfile && r.user === user.userProfile._id) {
             setReviewedByUser(true);
           }
         }
@@ -85,7 +85,7 @@ const ProductDetails = () => {
     // DisplayImage()
     fetchReviews();
 
-  }, [productId, reviewedByUser, user.userProfile._id]);
+  }, [productId, reviewedByUser, user && user.userProfile && user.userProfile._id]);
 
   const onRequestClose = () => {
     setIsOpen(false);
