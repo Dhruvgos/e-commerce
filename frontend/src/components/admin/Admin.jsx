@@ -5,10 +5,15 @@ import ProductModal from './ProductModal.jsx';
 
 const Admin = () => {
   const [openModal, setopenModal] = useState(false);
-
+  const [productadded, setproductadded] = useState(false)
+  
   const openTheModal = () => {
     setopenModal(true);
   };
+ 
+  const newProductAdded = ()=>{
+    setproductadded(previous=>!previous)
+  }
 
   const closeModal = () => {
     setopenModal(false);
@@ -36,8 +41,8 @@ const Admin = () => {
         </div>
       </div>
 
-      {openModal && <ProductModal isOpen={openModal} onRequestClose={closeModal} />}
-      <AdminProductList />
+      {openModal && <ProductModal newProductAdded={newProductAdded} isOpen={openModal} onRequestClose={closeModal} />}
+      <AdminProductList productadded={productadded} />
     </div>
   );
 };

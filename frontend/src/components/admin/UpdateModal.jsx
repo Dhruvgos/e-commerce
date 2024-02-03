@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const UpdateModal = ({ isOpen, onRequestClose, productDetail }) => {
+const UpdateModal = ({ isOpen, onRequestClose, productDetail,productisUpdated }) => {
     const [productQuantity, setProductQuantity] = useState(productDetail.product.stock);
     //   console.log(productDetail.product._id)
     const [productName, setproductName] = useState(productDetail.name)
@@ -21,6 +21,7 @@ const UpdateModal = ({ isOpen, onRequestClose, productDetail }) => {
        })
        const data = await reponse.json();
        onRequestClose()
+       productisUpdated()
        console.log(data)
     };
 // console.log( productName,price,productQuantity,category,description)

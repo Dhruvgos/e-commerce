@@ -7,6 +7,7 @@ const AdminOrders = () => {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [loading, setloading] = useState(true)
+  const [deleteorder, setdeleteorder] = useState(false)
   useEffect(() => {
     const fetchAdminOrders = async () => {
       try {
@@ -26,7 +27,7 @@ const AdminOrders = () => {
     };
 
     fetchAdminOrders();
-  }, [updateModalOpen]); // Include updateModalOpen in the dependency array
+  }, [updateModalOpen,deleteorder]); // Include updateModalOpen in the dependency array
 
   const handleUpdateOrder = (orderId) => {
     setUpdateModalOpen(true);
@@ -41,11 +42,14 @@ const AdminOrders = () => {
       ,headers:  {'auth-token':localStorage.getItem('token')}
     });
 
-    const data = await response.json();
-    console.log(data);
-
+    if(response.status==200){
+      setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
+      setdeleteorder(prev=>!prev)
+    }
+    // const data = await response.json();
+    // console.log(data);
+    
     // Remove the deleted order from the state
-    setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
   };
 
   const handleToggleDetails = (orderId) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import { UseSelector } from 'react-redux';
-function ProductReview({id, isOpen,onRequestClose }) {
+function ProductReview({id, isOpen,onRequestClose ,reviewbyuser}) {
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState('');
 
@@ -38,6 +38,7 @@ console.log(id)
   
       // Perform actions with rating and comment
       onRequestClose();
+      reviewbyuser()
     } catch (error) {
       console.error('Error:', error.message);
       // Handle and display the error

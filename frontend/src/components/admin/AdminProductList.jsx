@@ -5,10 +5,18 @@ import AdminProductCard from './AdminProductCard.jsx'
 
 import { SpinnerCircular } from 'spinners-react';
 
-const AdminProductList = () => {
-
+const AdminProductList = ({productadded}) => {
+    const [productUpdated, setproductUpdated] = useState(false)
     const [loading, setloading] = useState(true)
+    const [productdeleted, setproductdeleted] = useState(false)
 
+    const productisDeleted = () =>{
+        setproductdeleted(prev=>!prev)
+    }
+
+    const productisUpdated =() =>{
+        setproductUpdated(updated=>!updated)
+    }
     useEffect(() => {
         const fetchProducts = async () => {
             const repsonse = await fetch("https://ecommerce-kdk6.onrender.com/api/v1/products/getadminproducts", {
@@ -23,7 +31,7 @@ const AdminProductList = () => {
             setloading(false)
         }
         fetchProducts()
-    }, [])
+    }, [productUpdated,productadded,productdeleted])
 
     const [products, setproducts] = useState([])
     // console.log(products[0].images[0].secure_url)
@@ -35,7 +43,7 @@ const AdminProductList = () => {
 </div>:products.length===0?<p>No products to show.</p>:
             products.map((product) => (
                 console.log(product),
-                <AdminProductCard key={product._id} product={product} {...product} image={product.images[0].secure_url} />
+                <AdminProductCard productisDeleted={productisDeleted} productisUpdated={productisUpdated} key={product._id} product={product} {...product} image={product.images[0].secure_url} />
                 ))}
                 {/* <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Add a new product</button> */}
         </div>)

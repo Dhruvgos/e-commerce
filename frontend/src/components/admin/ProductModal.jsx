@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Cloudinary } from "@cloudinary/url-gen";
 
-const ProductModal = ({ isOpen, onRequestClose }) => {
+const ProductModal = ({ isOpen, onRequestClose,newProductAdded }) => {
   const [productQuantity, setProductQuantity] = useState(0);
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState(0);
@@ -69,6 +69,7 @@ const ProductModal = ({ isOpen, onRequestClose }) => {
       formData.delete('images');
       setImages([]);
       onRequestClose();
+      newProductAdded();
     } catch (error) {
       console.error('Error adding product:', error);
     }

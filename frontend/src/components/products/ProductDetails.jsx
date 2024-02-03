@@ -70,12 +70,12 @@ const ProductDetails = () => {
       const data = await response.json();
       setReviews(data.productReview);
       data.productReview.forEach((r) => {
-        if(!userProfile){
+       
 
           if (user && user.userProfile && r.user === user.userProfile._id) {
             setReviewedByUser(true);
           }
-        }
+        
       });
     };
 
@@ -90,6 +90,9 @@ const ProductDetails = () => {
   const onRequestClose = () => {
     setIsOpen(false);
   };
+  const isReviewedByuser =()=>{
+    setReviewedByUser(true)
+  }
 
   const deleteReview = async () => {
     const response = await fetch(
@@ -205,6 +208,7 @@ const ProductDetails = () => {
                 id={productId}
                 isOpen={isOpen}
                 onRequestClose={onRequestClose}
+                reviewbyuser  = {isReviewedByuser}
               />
             )}
             {reviews.length > 0 ? (
