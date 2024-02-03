@@ -70,8 +70,11 @@ const ProductDetails = () => {
       const data = await response.json();
       setReviews(data.productReview);
       data.productReview.forEach((r) => {
-        if (r.user === user.userProfile._id) {
-          setReviewedByUser(true);
+        if(!userProfile){
+
+          if (r.user === user.userProfile._id) {
+            setReviewedByUser(true);
+          }
         }
       });
     };
