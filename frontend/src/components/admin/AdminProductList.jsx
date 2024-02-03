@@ -28,10 +28,11 @@ const AdminProductList = () => {
     const [products, setproducts] = useState([])
     // console.log(products[0].images[0].secure_url)
     return (
+        
         <div className="p-8 bg-slate-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
-            {loading?<div className="flex items-center justify-center h-screen">
-    <SpinnerCircular />
-  </div>:products.length===0?<p>No products to show.</p>:
+        {loading?<div className=" col-span-3  flex items-center justify-center h-screen">
+<SpinnerCircular />
+</div>:products.length===0?<p>No products to show.</p>:
             products.map((product) => (
                 console.log(product),
                 <AdminProductCard key={product._id} product={product} {...product} image={product.images[0].secure_url} />

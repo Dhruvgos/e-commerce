@@ -7,7 +7,7 @@ import ProductReview from "./ProductReview";
 import { useSelector } from "react-redux";
 import SimpleImageSlider from "react-simple-image-slider";
 import QuantityModal from "./QuantityModal";
-
+import { SpinnerCircular } from 'spinners-react';
 const ProductDetails = () => {
   // const user = useSelector((state)=>state.user.userProfile)
   const { productId } = useParams();
@@ -107,7 +107,9 @@ const ProductDetails = () => {
   };
 
   if (!productDetails) {
-    return <div>Loading...</div>; // Handle loading state
+    return  <div className="flex items-center justify-center h-screen">
+    <SpinnerCircular />
+  </div>
   }
 
   const onPageChange = (page) => {
