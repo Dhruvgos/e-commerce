@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
+import { useMemo} from 'react';
 import SimpleImageSlider from 'react-simple-image-slider';
 import { SpinnerCircular } from 'spinners-react';
 function ProductList() {
@@ -32,7 +33,8 @@ function ProductList() {
 
     fetchProducts();
   }, []);
-
+  const cachedData = useMemo(() => products, [products]);
+  console.log(cachedData)
   return (
     <>
   
@@ -72,7 +74,7 @@ function ProductList() {
       </div>
       ) : (
         <div className="p-8 bg-slate-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
-          {products
+          {cachedData
             .slice(
               (currentPage - 1) * productsPerPage,
               currentPage * productsPerPage
