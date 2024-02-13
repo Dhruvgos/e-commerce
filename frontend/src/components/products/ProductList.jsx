@@ -33,8 +33,8 @@ function ProductList() {
 
     fetchProducts();
   }, []);
-  const cachedData = useMemo(() => products, [products]);
-  console.log(cachedData)
+  // const cachedData = useMemo(() => products, [products]);
+  // console.log(cachedData)
   return (
     <>
   
@@ -74,7 +74,7 @@ function ProductList() {
       </div>
       ) : (
         <div className="p-8 bg-slate-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
-          {cachedData
+          {products
             .slice(
               (currentPage - 1) * productsPerPage,
               currentPage * productsPerPage
