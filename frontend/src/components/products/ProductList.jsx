@@ -7,6 +7,8 @@ function ProductList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [filteredProducts, setFilteredProducts] = useState([]); 
+  const [searchedProducts, setsearchedProducts] = useState("")
   const productsPerPage = 8; // Set the number of reviews to display per page
 
   const onPageChange = (page) => {
@@ -23,6 +25,7 @@ function ProductList() {
         });
         const data = await response.json();
         setProducts(data.products);
+        setFilteredProducts(data.products)
         console.log(data.products)
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -33,8 +36,16 @@ function ProductList() {
 
     fetchProducts();
   }, []);
-  // const cachedData = useMemo(() => products, [products]);
-  // console.log(cachedData)
+
+  console.log(searchedProducts)
+  const search = () => {
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(searchedProducts.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchedProducts.toLowerCase())
+    );
+    setFilteredProducts(filtered); // Update filtered products
+  };
+
   return (
     <>
   
@@ -67,6 +78,21 @@ function ProductList() {
       <div className='bg-slate-50 font-serif text-4xl text-center py-8'>
         Products
       </div>
+      <div className='flex justify-center mb-4 mt-1'>
+        <input
+          value={searchedProducts}
+          onChange={(e) => setsearchedProducts(e.target.value)}
+          className='p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-indigo-500 w-80'
+          placeholder='Search the products'
+          type="text"
+        />
+        <button
+          onClick={search}
+          className='ml-2 px-4 py-2 bg-indigo-600 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        >
+          Search
+        </button>
+      </div>
 
       {loading ? (
         <div className="flex items-center justify-center h-screen">
@@ -74,7 +100,7 @@ function ProductList() {
       </div>
       ) : (
         <div className="p-8 bg-slate-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
-          {products
+          {filteredProducts
             .slice(
               (currentPage - 1) * productsPerPage,
               currentPage * productsPerPage

@@ -21,6 +21,7 @@ function App() {
     <div >
        <Router>
       <NavBar/>
+      
       <Routes>
         <Route path="/" exact element={<Home/>} />
         <Route path="/products" element={<ProductList/>} />
